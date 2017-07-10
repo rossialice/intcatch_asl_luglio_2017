@@ -35,4 +35,3 @@ class GUI(tk.Frame):
         self.stop_button.pack(side="left")
 
       
->>>>>>> 8a09ce95fdf00b55753fefaa7e14806edb9f54c3
