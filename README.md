@@ -18,6 +18,7 @@ A python software for reading logs captured from the INTCATCH boats
  <p> 4. </p>
 
 
+![GitHub Logo](image/intcatchlogo.png)
  <h1> Diario delle lezioni: </h1>
 <table class="classtable">
 			<tr>
