@@ -18,8 +18,3 @@ A python software for reading logs captured from the INTCATCH boats
 				<td>Secondo valore:</th>
 				<td><input type="text" size="5" name="i1">
 			</tr>
-	
-	 </table>
-=======
-![GitHub Logo](image/logogalilei.png)
->>>>>>> 72cada2e6782c56e9ceecc77d2985dfbb96b8d9b
