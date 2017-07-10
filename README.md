@@ -1,5 +1,5 @@
 # intcatch asl luglio 2017        
-<img src="image/logouni.png" style="width:50; height:50" > 
+<img src="image/logouni.png" height=50> 
 
 
 A python software for reading logs captured from the INTCATCH boats
@@ -10,7 +10,7 @@ A python software for reading logs captured from the INTCATCH boats
 - [Intcatch website](http://intcatch.eu/)
 ![GitHub Logo](image/logogalilei.png)
  
-<h1>Attivit‡ svolte:</h1>
+<h1>Attivit√† svolte:</h1>
 
  <p> 1. </p>
 <p> 2. </p>
