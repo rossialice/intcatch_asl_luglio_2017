@@ -42,10 +42,8 @@ class GUI(tk.Frame):
         self.play_button = Button(self.master, text="Play", command=self.play, image=play_icon)
         self.play_button.image = play_icon  # keep a reference!
         self.play_button.pack(side="left")
-<<<<<<< HEAD
-=======
+
 		  
->>>>>>> 2db11ccc6f3b38a95b5f85b245ccb25a62415c0f
         stop_image = Image.open('icon/stop.png')
         stop_icon = ImageTk.PhotoImage(stop_image)
         self.stop_button = Button(self.master, text="Stop", command=self.stop, image=stop_icon)
