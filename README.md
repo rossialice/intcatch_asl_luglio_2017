@@ -7,3 +7,16 @@ A python software for reading logs captured from the INTCATCH boats
 - Liceo Scientifico Statale opzione scienze applicate ["Galileo Galilei"](https://www.galileivr.gov.it/).
 - [Intcatch website](http://intcatch.eu/).
 - ![GitHub Logo](/images/logogalilei.png)
+ 
+ 
+<table class="classtable">
+			<tr>
+				<th>Primo valore:</th>
+				<th><input type="text" size="5" name="i1">
+			</tr>
+			<tr>
+				<td>Secondo valore:</th>
+				<td><input type="text" size="5" name="i1">
+			</tr>
+	
+	 </table>
