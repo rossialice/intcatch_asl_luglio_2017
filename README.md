@@ -1,5 +1,5 @@
 # intcatch asl luglio 2017        
-<img src="image/logouni.png" style="width:128; height:128" > ![GitHub Logo](image/logouni.png) 
+<img src="image/logouni.png" style="width:50; height:50" > 
 
 
 A python software for reading logs captured from the INTCATCH boats
