@@ -11,6 +11,7 @@ from gui import GUI
 
 
 #test opencv
+print('test opencv')
 
 # Load a color image
 img_c = cv2.imread('../image/intcatchlogo.png', 1)
@@ -20,8 +21,10 @@ img_g = cv2.imread('../image/intcatchlogo.png', 0)
 
 if img_c is not None and img_g is not None:
     print("immagini caricate correttamente")
+    print("test [OK]")
 else:
     print("impossibile leggere le immagini")
+    print("test FAILED")
     sys.exit()
 	
 cv2.namedWindow('color image', 1)
