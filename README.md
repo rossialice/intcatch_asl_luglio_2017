@@ -6,4 +6,4 @@ A python software for reading logs captured from the INTCATCH boats
 - Autori Rossi Alice, Ricci Francesco e Bloisi Domenico.
 - Liceo Scientifico Statale opzione scienze applicate ["Galileo Galilei"](https://www.galileivr.gov.it/).
 - [Intcatch website](http://intcatch.eu/).
-- ![GitHub Logo](images/logogalilei.png)
+- ![GitHub Logo](image/logogalilei.png)
