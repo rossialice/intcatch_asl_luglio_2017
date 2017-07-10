@@ -25,7 +25,13 @@ class GUI(tk.Frame):
         self.play_button.image = play_icon  # keep a reference!
         self.play_button.pack(side="left")
 		
-	
+class GUI(tk.Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.pack()
+        self.create_widgets()
+		
     def stop(self):
         print("Stop!")    
 
