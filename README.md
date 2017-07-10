@@ -12,11 +12,9 @@ A python software for reading logs captured from the INTCATCH boats
 <table class="classtable">
 			<tr>
 				<th>Data</th>
-				<th><input type="text" size="5" name="i1">
                                 <th>Argomenti trattati </th>
-				<th><input type="text" size="15" name="i1"> 
 			</tr>
 			<tr>
-				<td>Secondo valore:</th>
-				<td><input type="text" size="5" name="i1">
+				<td>10/07/2017</td>
+				<td>Aspetti organizzativi, basi python e crezione sito github</td>
 			</tr>
