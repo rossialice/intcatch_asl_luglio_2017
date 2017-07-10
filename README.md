@@ -8,6 +8,12 @@ A python software for reading logs captured from the INTCATCH boats
 - [Intcatch website](http://intcatch.eu/)
 ![GitHub Logo](image/logogalilei.png)
  
+<h1>Attività svolte:</h1>
+1.
+2.
+3.
+4.
+
  <h1> Diario delle lezioni: </h1>
 <table class="classtable">
 			<tr>
@@ -16,5 +22,5 @@ A python software for reading logs captured from the INTCATCH boats
 			</tr>
 			<tr>
 				<td>10/07/2017</td>
-				<td>Aspetti organizzativi, basi python e crezione sito github</td>
+				<td>Aspetti organizzativi, basi python e creazione sito github</td>
 			</tr>
