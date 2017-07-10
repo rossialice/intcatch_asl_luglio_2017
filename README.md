@@ -8,7 +8,7 @@ A python software for reading logs captured from the INTCATCH boats
 - [Intcatch website](http://intcatch.eu/)
 ![GitHub Logo](image/logogalilei.png)
  
- 
+ <h1> Diario delle lezioni: </h1>
 <table class="classtable">
 			<tr>
 				<th>Data</th>
