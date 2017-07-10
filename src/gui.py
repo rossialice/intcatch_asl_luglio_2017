@@ -33,8 +33,10 @@ class GUI(tk.Frame):
         print("Graph!")
 
     def about(self):
-        print("About!") 		
- 
+        print("About!")
+        print("tk")
+        aboutwindow = AboutWindow()
+
     def create_widgets(self):
         
         play_image = Image.open('icon/play.png')
@@ -80,6 +82,25 @@ class GUI(tk.Frame):
         self.about_button.image = about_icon  # keep a reference!
         self.about_button.pack(side="left")
 		
+		
+class AboutWindow(tk.Frame):
+		
+		
+    def __init__(self, master=None):
+        print("init")
+        super().__init__(master)
+
+        print("prima di create window")
+        self.create_window()
+        self.pack()
+
+    def create_window(self):
+        t = tk.Toplevel(self)
+
+        print("ultimo")
+        #t.wm_title("Window #%s" % self.counter)
+        l = tk.Label(t, text="Rossi Alice e Ricci Francesco. \n ® 2017")
+        l.pack(side="top", fill="both", expand=True, padx=100, pady=30)
 
 
 
