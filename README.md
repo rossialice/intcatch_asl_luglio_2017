@@ -11,8 +11,10 @@ A python software for reading logs captured from the INTCATCH boats
  
 <table class="classtable">
 			<tr>
-				<th>Primo valore:</th>
+				<th>Data</th>
 				<th><input type="text" size="5" name="i1">
+                                <th>Argomenti trattati </th>
+				<th><input type="text" size="15" name="i1"> 
 			</tr>
 			<tr>
 				<td>Secondo valore:</th>
