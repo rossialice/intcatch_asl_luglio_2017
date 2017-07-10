@@ -41,4 +41,4 @@ class GUI(tk.Frame):
         stop_icon = ImageTk.PhotoImage(stop_image)
         self.stop_button = Button(self.master, text="Stop", command=self.stop, image=stop_icon)
         self.stop_button.image = stop_icon  # keep a reference!
-        self.stop_button.pack(side="left")
+        self.stop_button.pack(side="center")
