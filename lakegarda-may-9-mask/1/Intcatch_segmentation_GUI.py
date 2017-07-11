@@ -102,7 +102,7 @@ class SegmentationGUI(Frame):
         RadioButtonChoiceTheMask1=Radiobutton(root, text="Water", padx = 20, variable=self.mask_type_choice, value=1)
         RadioButtonChoiceTheMask2=Radiobutton(root, text="Other", padx = 20, variable=self.mask_type_choice, value=2)
         RadioButtonChoiceTheMask3=Radiobutton(root, text="Undo", padx = 20, variable=self.mask_type_choice, value=3)
-        btnShow = Button(root, text='Show', command=self.slider_refresh)
+        btnShow = Button(root, text='generate', command=self.slider_refresh)
         self.slider1 = Scale(root, from_=0, to=5000, orient=HORIZONTAL)
         self.slider2 = Scale(root, from_=0, to=100, orient=HORIZONTAL)
         self.slider3 = Scale(root, from_=0, to=30, orient=HORIZONTAL, resolution =   0.5)
