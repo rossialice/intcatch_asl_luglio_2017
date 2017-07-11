@@ -72,10 +72,9 @@ class SegmentationGUI(Frame):
     
         self.main_window()
 
-    def drag(event):
-        print("Mouse position: (%s %s)" % (event.x, event.y))
+    def drag(self,event):
+        self.panelB.scan_dragto(event.x, event.y, gain=1)
         return
-        
         
     def main_window(self):
         # create a button, then when pressed, will trigger a file chooser
@@ -189,6 +188,8 @@ class SegmentationGUI(Frame):
             
             #set the keybord and mouse events
             self.panelB.bind("<B1-Motion>", self.draw)
+            self.panelB.bind("<ButtonPress-3>", self.move_start2)
+            self.panelB.bind("<B3-Motion>", self.drag)
 
 
     def draw(self,event):
@@ -497,7 +498,8 @@ class SegmentationGUI(Frame):
         self.panelA.scan_mark(event.x, event.y)
     def move_move(self,event):
         self.panelA.scan_dragto(event.x, event.y, gain=1)
-        
+    def move_start2(self,event):
+        self.panelB.scan_mark(event.x, event.y)
     #windows zoom
     def zoomer(self,event):
         if (event.delta > 0):
@@ -564,15 +566,26 @@ class SegmentationGUI(Frame):
                         mask2saveWater[y,x] = 1
                     #elif(mask [x,y] == (255,255,255)):
                         #mask2saveOther[x,y] = (255,255,255)
-                        
+            mask2saveVisible = np.zeros(self.image_original.shape[:2], dtype="uint8")
+            # mask2saveOther = np.zeros(self.image_original.shape[:3], dtype = "uint8")
+            for x in range(self.width_original):
+                for y in range(self.height_original):
+                    tmp = mask[y, x]
+                    if (np.array_equal(tmp, (100, 100, 255))):
+                        mask2saveVisible[y, x] = 255
             Fname=(self.path[self.path.rfind('/')+1 : self.path.rfind('.')] + 'MaskWater')
             print(self.images)
             f =  filedialog.asksaveasfile(mode='wb',initialfile=Fname, defaultextension=".png", filetypes=(("PNG file", "*.png"),("All Files", "*.*")))
 
             if f:
                 abs_path = os.path.abspath(f.name)
-                maskOUT=toimage(mask2saveWater)
+                visible_path=f.name
+                maskOUT = toimage(mask2saveWater)
                 maskOUT.save(abs_path)
+                visible_path = (visible_path[visible_path.rfind('/') + 1: visible_path.rfind('.')] + '_visible.png')
+                print("visible_path: " + visible_path)
+                maskVisible = toimage(mask2saveVisible)
+                maskVisible.save(visible_path)
 
     
 #The master of the GUI
