@@ -28,3 +28,7 @@ A python software for reading logs captured from the INTCATCH boats
 				<td>10/07/2017</td>
 				<td>Aspetti organizzativi, basi python e creazione sito github</td>
 			</tr>
+			<tr>
+				<td>11/07/2017</td>
+				<td>Programmazione python, collaborazione nel realizzare un programma per la creazione di maschere, creazione di maschere</td>
+			</tr>
