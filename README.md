@@ -1,7 +1,6 @@
 ﻿# intcatch asl luglio 2017        
 <img src="image/logouni.png" height=50> 
 
-<body bgcolor="orange>
 A python software for reading logs captured from the INTCATCH boats
 
 - Progetto sviluppato per l'Alternanza Scuola Lavoro 2017 dal 10/07/17 al 21/07/17.
@@ -29,4 +28,3 @@ A python software for reading logs captured from the INTCATCH boats
 				<td>10/07/2017</td>
 				<td>Aspetti organizzativi, basi python e creazione sito github</td>
 			</tr>
-</body>
