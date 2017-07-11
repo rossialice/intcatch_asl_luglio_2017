@@ -1,7 +1,6 @@
 import tkinter as tk
 
 from tkinter import Tk, Label, Button, PhotoImage
-
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename
 
@@ -31,11 +30,21 @@ class GUI(tk.Frame):
         self.next_button.configure(state="active")
         self.play_button.configure(state="active")
         self.map_button.configure(state="disabled")
+		
 	
     def log(self):
         print("Log!")
         self.log_button.configure(state="disabled")
         self.map_button.configure(state="active")
+		
+        name = askopenfilename(initialdir="C:/Users/Batman/Documents/Programming/tkinter/", filetypes =(("Text File", "*.txt"),("All Files","*.*")), title = "Choose a file.")
+        print (name)
+        #Using try in case user types in unknown file or closes without choosing a file.
+        try:
+            with open(name,'r') as UseFile:
+                print(UseFile.read())
+        except:
+            print("No file exists")
 	
     def graph(self):
         print("Graph!")
