@@ -71,6 +71,10 @@ class SegmentationGUI(Frame):
         
     
         self.main_window()
+
+    def drag(event):
+        print("Mouse position: (%s %s)" % (event.x, event.y))
+        return
         
         
     def main_window(self):
@@ -107,12 +111,12 @@ class SegmentationGUI(Frame):
         self.slider2.set(20)
         self.slider3.set(1)       
         # Save Mask Button
-        btnSave = Button(root, text='Save Mask', command=self.save_mask)
+        btnSave = Button(root, text='Save', command=self.save_mask)
         # Adjust the Mask
-        btnAdjust = Button(root, text='Adjust the Mask', command=self.adjust_mask)
+        btnAdjust = Button(root, text='Adjust', command=self.adjust_mask)
         self.text = Text(root,width=100, height=1)
-
-        
+        btndrag = Button(root, text='Drag', command=self.drag)
+        btndrag.bind('<Motion>',self.drag)
         #set the position of the widget in the window
         btnSelectImage.grid(row=0,column=1,columnspan=2)
         btnReset.grid(row=0,column=3,columnspan=2)
@@ -132,8 +136,9 @@ class SegmentationGUI(Frame):
         self.slider2.grid(row=8,column=1,columnspan=3,sticky='WE')
         self.slider3.grid(row=9,column=1,columnspan=3,sticky='WE')
         btnShow.grid(row=8,column=4)
-        btnAdjust.grid(row=10,column=2,columnspan=2)
-        btnSave.grid(row=11,column=2,columnspan=2)
+        btnAdjust.grid(row=10,column=1,columnspan=2)
+        btndrag.grid(row=10,column=2,columnspan=2)
+        btnSave.grid(row=10,column=3,columnspan=2)
         
         #set the keybord and mouse events
         self.panelA.bind("<Button-1>", self.select_segment)
@@ -151,7 +156,7 @@ class SegmentationGUI(Frame):
     def adjust_mask(self):
         if(self.path!=None):
             self.t = Toplevel()
-            self.t.wm_title("adjust the mask")
+            self.t.wm_title("adjust")
             self.mask=cv2.resize(self.mask,(self.width_original*2, self.height_original*2), interpolation = cv2.INTER_CUBIC)
             self.image=self.image_original_2x
             height,width=self.image.shape[:2]
@@ -184,8 +189,8 @@ class SegmentationGUI(Frame):
             
             #set the keybord and mouse events
             self.panelB.bind("<B1-Motion>", self.draw)
-            
-            
+
+
     def draw(self,event):
         x=int(self.panelB.canvasx(event.x))#event.x
         y=int(self.panelB.canvasy(event.y))#event.y
