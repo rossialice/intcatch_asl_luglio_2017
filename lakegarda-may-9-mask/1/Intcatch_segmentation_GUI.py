@@ -102,13 +102,22 @@ class SegmentationGUI(Frame):
         RadioButtonChoiceTheMask1=Radiobutton(root, text="Water", padx = 20, variable=self.mask_type_choice, value=1)
         RadioButtonChoiceTheMask2=Radiobutton(root, text="Other", padx = 20, variable=self.mask_type_choice, value=2)
         RadioButtonChoiceTheMask3=Radiobutton(root, text="Undo", padx = 20, variable=self.mask_type_choice, value=3)
+        RadioButtonChoiceTheMask4 = Radiobutton(root, text="Vegetation", padx=20, variable=self.mask_type_choice, value=4)
+        RadioButtonChoiceTheMask5 = Radiobutton(root, text="Boats", padx=20, variable=self.mask_type_choice,  value=5)
+        RadioButtonChoiceTheMask6 = Radiobutton(root, text="Sky", padx=20, variable=self.mask_type_choice, value=6)
         btnShow = Button(root, text='generate', command=self.slider_refresh)
         self.slider1 = Scale(root, from_=0, to=5000, orient=HORIZONTAL)
         self.slider2 = Scale(root, from_=0, to=100, orient=HORIZONTAL)
         self.slider3 = Scale(root, from_=0, to=30, orient=HORIZONTAL, resolution =   0.5)
+        self.slider4= Scale(root, from_=0, to=20, orient=HORIZONTAL, resolution=0.5)
+        self.slider5 = Scale(root, from_=0, to=20, orient=HORIZONTAL, resolution=0.5)
+        self.slider6 = Scale(root, from_=0, to=20, orient=HORIZONTAL, resolution=0.5)
         self.slider1.set(150)
         self.slider2.set(20)
-        self.slider3.set(1)       
+        self.slider3.set(1)
+        self.slider4.set(1)
+        self.slider5.set(1)
+        self.slider6.set(1)
         # Save Mask Button
         btnSave = Button(root, text='Save', command=self.save_mask)
         # Adjust the Mask
@@ -126,11 +135,15 @@ class SegmentationGUI(Frame):
         RadioButtonChoiceTheMask1.grid(row=1,column=6)
         RadioButtonChoiceTheMask2.grid(row=2,column=6)
         RadioButtonChoiceTheMask3.grid(row=3,column=6)
+        RadioButtonChoiceTheMask4.grid(row=4, column=6)
+        RadioButtonChoiceTheMask5.grid(row=5, column=6)
+        RadioButtonChoiceTheMask6.grid(row=6, column=6)
         btnNext.grid(row=2,column=0)
         btnPrevious.grid(row=3,column=0)
         RadioButton1.grid(row=6,column=1)
         RadioButton2.grid(row=6,column=2)
         RadioButton3.grid(row=6,column=3)
+
         self.slider1.grid(row=7,column=1,columnspan=3,sticky='WE')
         self.slider2.grid(row=8,column=1,columnspan=3,sticky='WE')
         self.slider3.grid(row=9,column=1,columnspan=3,sticky='WE')
@@ -169,6 +182,9 @@ class SegmentationGUI(Frame):
             RadioButtonChoiceTheMask1=Radiobutton(self.t, text="Water", padx = 20, variable=self.mask_type_choice, value=1)
             RadioButtonChoiceTheMask2=Radiobutton(self.t, text="Other", padx = 20, variable=self.mask_type_choice, value=2)
             RadioButtonChoiceTheMask3=Radiobutton(self.t, text="Undo", padx = 20, variable=self.mask_type_choice, value=3)
+            RadioButtonChoiceTheMask4 = Radiobutton(self.t, text="Vegetation", padx=20, variable=self.mask_type_choice,value=4)
+            RadioButtonChoiceTheMask5 = Radiobutton(self.t, text="Boats", padx=20, variable=self.mask_type_choice,value=5)
+            RadioButtonChoiceTheMask6 = Radiobutton(self.t, text="Sky", padx=20, variable=self.mask_type_choice,value=6)
             self.pen_size=IntVar()
             self.pen_size.set(3)
             RadioButtonPenSize1=Radiobutton(self.t, text="small", padx = 20, variable=self.pen_size, value=1)
@@ -181,7 +197,11 @@ class SegmentationGUI(Frame):
             self.panelB.grid(row=0,column=0,columnspan=3)
             RadioButtonChoiceTheMask1.grid(row=1,column=0)
             RadioButtonChoiceTheMask2.grid(row=1,column=1)
-            RadioButtonChoiceTheMask3.grid(row=1,column=2)
+            RadioButtonChoiceTheMask3.grid(row=1,column=5)
+            RadioButtonChoiceTheMask4.grid(row=1,column=3)
+            RadioButtonChoiceTheMask5.grid(row=1,column=4)
+            RadioButtonChoiceTheMask6.grid(row=1,column=2)
+
             RadioButtonPenSize1.grid(row=2,column=0)
             RadioButtonPenSize2.grid(row=2,column=1)
             RadioButtonPenSize3.grid(row=2,column=2)
@@ -199,6 +219,9 @@ class SegmentationGUI(Frame):
         if(self.mask_type_choice.get() == 1): color = np.float64([100,100,255])
         if(self.mask_type_choice.get() == 2): color = np.float64([255,255,255])
         if(self.mask_type_choice.get() == 3): color = np.float64([0,0,0])
+        if (self.mask_type_choice.get() == 4): color = np.float64([0, 255, 0])
+        if (self.mask_type_choice.get() == 5): color = np.float64([200, 8, 21])
+        if (self.mask_type_choice.get() == 6): color = np.float64([255, 216, 0])
         height,width=self.image.shape[:2]
         if(self.pen_size.get()==1):
             if(x>=5): x1=x-5
@@ -227,7 +250,7 @@ class SegmentationGUI(Frame):
             else: x2=width
             if(y<=height-25): y2=y+25
             else: y2=height
-                
+
         self.mask[y1:y2,x1:x2]=color
         imageOUT = cv2.bitwise_or(self.image,self.mask)
         imageOUT = toimage(imageOUT)
@@ -350,6 +373,9 @@ class SegmentationGUI(Frame):
             if(self.mask_type_choice.get() == 1): color = np.float64([100,100,255])
             if(self.mask_type_choice.get() == 2): color = np.float64([255,255,255])
             if(self.mask_type_choice.get() == 3): color = np.float64([0,0,0])
+            if (self.mask_type_choice.get() == 4): color = np.float64([0, 255, 0])
+            if (self.mask_type_choice.get() == 5): color = np.float64([200, 8, 21])
+            if (self.mask_type_choice.get() == 6): color = np.float64([255, 216, 0])
             self.mask[self.segments == clicked_segment] = color
             imageOUT = cv2.bitwise_or(self.image,self.mask)
             imageOUT = toimage(mark_boundaries(imageOUT, self.segments))
