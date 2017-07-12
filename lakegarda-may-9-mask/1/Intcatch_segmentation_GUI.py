@@ -37,10 +37,13 @@ import os
 
 
 # In[133]:
+import tkinter as tk
 
+from tkinter import Tk, Button
 class SegmentationGUI(Frame):
 
     def __init__(self,master):
+
         #the name of the window
         master.title("Segmentation Tool")
         self.panelA = None
@@ -71,6 +74,34 @@ class SegmentationGUI(Frame):
         
     
         self.main_window()
+
+        def donothing():
+            filewin = Toplevel(root)
+            button = Button(filewin, text="Do nothing button")
+            button.pack()
+
+
+        menubar = Menu(root)
+        filemenu = Menu(menubar, tearoff=0)
+        filemenu.add_command(label="Open", command=self.open_image)
+        filemenu.add_command(label="Save as...", command=self.save_mask)
+        filemenu.add_separator()
+        filemenu.add_command(label="Exit", command=root.quit)
+        menubar.add_cascade(label="File", menu=filemenu)
+        editmenu = Menu(menubar, tearoff=0)
+        editmenu.add_command(label="Reset", command=self.reset_image)
+        editmenu.add_command(label="Adjust", command=self.adjust_mask)
+        menubar.add_cascade(label="Edit", menu=editmenu)
+        helpmenu = Menu(menubar, tearoff=0)
+        helpmenu.add_command(label="Help Index", command=donothing)
+        helpmenu.add_command(label="About...", command=self.create_windowdue)
+        menubar.add_cascade(label="Help", menu=helpmenu)
+        root.config(menu=menubar)
+        root.mainloop()
+
+
+    def create_windowdue(self):
+        aboutwindow=AboutWindow()
 
     def drag(self,event):
         self.panelB.scan_dragto(event.x, event.y, gain=1)
@@ -205,7 +236,6 @@ class SegmentationGUI(Frame):
             self.panelB.bind("<B1-Motion>", self.draw)
             self.panelB.bind("<ButtonPress-3>", self.move_start2)
             self.panelB.bind("<B3-Motion>", self.drag)
-
 
     def draw(self,event):
         x=int(self.panelB.canvasx(event.x))#event.x
@@ -608,6 +638,17 @@ class SegmentationGUI(Frame):
                 maskVisible = toimage(mask2saveVisible)
                 maskVisible.save(visible_path)
 
+class AboutWindow(tk.Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.create_window()
+        self.pack()
+
+    def create_window(self):
+        t = tk.Toplevel(self)
+        l = tk.Label(t, text="Rossi Alice, Ricci Francesco e ??. \n ® 2017")
+        l.pack(side="top", fill="both", expand=True, padx=100, pady=30)
     
 #The master of the GUI
 root=Tk()
