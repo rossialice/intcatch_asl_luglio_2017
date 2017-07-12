@@ -215,7 +215,7 @@ class SegmentationGUI(Frame):
         if(self.mask_type_choice.get() == 3): color = np.float64([0,0,0])
         if (self.mask_type_choice.get() == 4): color = np.float64([0, 255, 0])
         if (self.mask_type_choice.get() == 5): color = np.float64([200, 8, 21])
-        if (self.mask_type_choice.get() == 6): color = np.float64([95, 95, 95])
+        if (self.mask_type_choice.get() == 6): color = np.float64([153, 17, 153])
         height,width=self.image.shape[:2]
         if(self.pen_size.get()==1):
             if(x>=5): x1=x-5
@@ -369,7 +369,7 @@ class SegmentationGUI(Frame):
             if(self.mask_type_choice.get() == 3): color = np.float64([0,0,0])
             if (self.mask_type_choice.get() == 4): color = np.float64([0, 255, 0])
             if (self.mask_type_choice.get() == 5): color = np.float64([200, 8, 21])
-            if (self.mask_type_choice.get() == 6): color = np.float64([95, 95, 95])
+            if (self.mask_type_choice.get() == 6): color = np.float64([153, 17, 153])
             self.mask[self.segments == clicked_segment] = color
             imageOUT = cv2.bitwise_or(self.image,self.mask)
             imageOUT = toimage(mark_boundaries(imageOUT, self.segments))
