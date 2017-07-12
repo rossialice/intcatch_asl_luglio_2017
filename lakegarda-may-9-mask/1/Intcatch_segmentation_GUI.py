@@ -604,7 +604,6 @@ class SegmentationGUI(Frame):
 
                 self.panelA.create_image(0, 0, image = imageOUT, anchor = NW)
                 self.panelA.image = imageOUT
-            
     def save_mask(self):
         if(self.path!=None):
             mask=cv2.resize(self.mask,(self.width_original, self.height_original), interpolation = cv2.INTER_CUBIC)
@@ -617,13 +616,15 @@ class SegmentationGUI(Frame):
                         mask2saveWater[y,x] = 1
                     #elif(mask [x,y] == (255,255,255)):
                         #mask2saveOther[x,y] = (255,255,255)
-            mask2saveVisible = np.zeros(self.image_original.shape[:2], dtype="uint8")
+            mask2saveVisible = np.zeros(self.image_original.shape[:2], dtype="uint16")
             # mask2saveOther = np.zeros(self.image_original.shape[:3], dtype = "uint8")
             for x in range(self.width_original):
                 for y in range(self.height_original):
                     tmp = mask[y, x]
                     if (np.array_equal(tmp, (100, 100, 255))):
                         mask2saveVisible[y, x] = 255
+                    if (np.array_equal(tmp, (0, 255, 0))):
+                        mask2saveVisible[y, x] =  150
             Fname=(self.path[self.path.rfind('/')+1 : self.path.rfind('.')] + 'MaskWater')
             print(self.images)
             f =  filedialog.asksaveasfile(mode='wb',initialfile=Fname, defaultextension=".png", filetypes=(("PNG file", "*.png"),("All Files", "*.*")))
@@ -637,6 +638,7 @@ class SegmentationGUI(Frame):
                 print("visible_path: " + visible_path)
                 maskVisible = toimage(mask2saveVisible)
                 maskVisible.save(visible_path)
+
 
 class AboutWindow(tk.Frame):
 
