@@ -181,12 +181,12 @@ class SegmentationGUI(Frame):
             RadioButtonChoiceTheMask6 = Radiobutton(self.t, text="Sky", padx=20, variable=self.mask_type_choice,value=6)
             self.pen_size=IntVar()
             self.pen_size.set(3)
-            RadioButtonPenSize1=Radiobutton(self.t, text="small", padx = 20, variable=self.pen_size, value=1)
-            RadioButtonPenSize2=Radiobutton(self.t, text="normal", padx = 20, variable=self.pen_size, value=2)
-            RadioButtonPenSize3=Radiobutton(self.t, text="big", padx = 20, variable=self.pen_size, value=3)
+            RadioButtonPenSize1=Radiobutton(self.t, text="small", padx = 20, indicatoron=0, variable=self.pen_size, value=1)
+            RadioButtonPenSize2=Radiobutton(self.t, text="normal", padx = 20, indicatoron=0, variable=self.pen_size, value=2)
+            RadioButtonPenSize3=Radiobutton(self.t, text="big", padx = 20, indicatoron=0, variable=self.pen_size, value=3)
             btnCloseAdjustMask = Button(self.t, text='Confirm Modification', command=self.close_adjust_mask)
             
-            
+
 
             self.panelB.grid(row=0,column=0,columnspan=3)
             RadioButtonChoiceTheMask1.grid(row=1,column=0)
