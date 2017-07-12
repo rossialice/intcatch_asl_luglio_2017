@@ -608,6 +608,13 @@ class SegmentationGUI(Frame):
     def save_mask(self):
         if(self.path!=None):
             mask=cv2.resize(self.mask,(self.width_original, self.height_original), interpolation = cv2.INTER_CUBIC)
+
+            cv2.imshow("prova", mask)
+            cv2.waitKey(0)
+
+
+
+
             mask2saveWater = np.zeros(self.image_original.shape[:2], dtype = "uint8")
             #mask2saveOther = np.zeros(self.image_original.shape[:3], dtype = "uint8")
             for x in range (self.width_original):
