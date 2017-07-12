@@ -121,9 +121,7 @@ class AboutWindow(tk.Frame):
     def create_window(self):
         t = tk.Toplevel(self)
 
-        print("ultimo")
-        #t.wm_title("Window #%s" % self.counter)
-        l = tk.Label(t, text="Rossi Alice e Ricci Francesco. \n ® 2017")
+        l = tk.Label(t, text="Rossi Alice e Ricci Francesco e Steccanella Lorenzo. \n ® 2017")
         l.pack(side="top", fill="both", expand=True, padx=100, pady=30)
 
 
