@@ -647,7 +647,7 @@ class AboutWindow(tk.Frame):
 
     def create_window(self):
         t = tk.Toplevel(self)
-        l = tk.Label(t, text="Rossi Alice, Ricci Francesco e ??. \n ® 2017")
+        l = tk.Label(t, text="Rossi Alice, Ricci Francesco e Steccanella Lorenzo. \n ® 2017")
         l.pack(side="top", fill="both", expand=True, padx=100, pady=30)
     
 #The master of the GUI
