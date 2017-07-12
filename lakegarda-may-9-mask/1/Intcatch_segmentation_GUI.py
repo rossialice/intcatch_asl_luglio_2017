@@ -608,8 +608,7 @@ class SegmentationGUI(Frame):
         if(self.path!=None):
             mask=cv2.resize(self.mask,(self.width_original, self.height_original), interpolation = cv2.INTER_CUBIC)
 
-            cv2.imshow("prova", mask)
-            cv2.waitKey(0)
+
 
 
 
@@ -627,11 +626,20 @@ class SegmentationGUI(Frame):
             # mask2saveOther = np.zeros(self.image_original.shape[:3], dtype = "uint8")
             for x in range(self.width_original):
                 for y in range(self.height_original):
-                    tmp = mask[y, x]
-                    if (np.array_equal(tmp, (100, 100, 255))):
+                    px = mask[y, x]
+                    blue = mask[y, x, 0]
+                    green= mask[y, x, 1]
+                    red= mask[y, x, 2]
+                    if ((blue<110 and blue>90) and (green<110 and blue>90) and red>245):
+                    #if (np.array_equal(tmp, (100, 100, 255))):
+                        mask[y,x]= (255, 100, 100)
                         mask2saveVisible[y, x] = 255
-                    if (np.array_equal(tmp, (0, 255, 0))):
+                    elif (np.array_equal(tmp, (200, 8, 21))):
+                        mask[y, x] = (21, 8, 200)
                         mask2saveVisible[y, x] =  150
+                    else: mask[y, x] = (0, 0, 0)
+
+
             Fname=(self.path[self.path.rfind('/')+1 : self.path.rfind('.')] + 'MaskWater')
             print(self.images)
             f =  filedialog.asksaveasfile(mode='wb',initialfile=Fname, defaultextension=".png", filetypes=(("PNG file", "*.png"),("All Files", "*.*")))
@@ -642,9 +650,12 @@ class SegmentationGUI(Frame):
                 maskOUT = toimage(mask2saveWater)
                 maskOUT.save(abs_path)
                 visible_path = (visible_path[visible_path.rfind('/') + 1: visible_path.rfind('.')] + '_visible.png')
-                print("visible_path: " + visible_path)
-                maskVisible = toimage(mask2saveVisible)
-                maskVisible.save(visible_path)
+                #maskVisible = toimage(mask2saveVisible)
+                #maskVisible.save(visible_path)
+                #cv2.imshow("prova", mask)
+                #cv2.waitKey(0)
+                cv2.imwrite(visible_path, mask)
+
 
 
 class AboutWindow(tk.Frame):
