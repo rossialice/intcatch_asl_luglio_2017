@@ -634,9 +634,15 @@ class SegmentationGUI(Frame):
                     #if (np.array_equal(tmp, (100, 100, 255))):
                         mask[y,x]= (255, 100, 100)
                         mask2saveVisible[y, x] = 255
-                    elif (np.array_equal(tmp, (200, 8, 21))):
+                    elif ((blue<210 and blue>190) and green<18 and (red>11 and red<31)):
                         mask[y, x] = (21, 8, 200)
                         mask2saveVisible[y, x] =  150
+                    elif (blue==255 and green==255 and red==255):
+                        mask[y, x] = (255, 255, 255)
+                    elif (blue==153 and green==17 and red==153):
+                        mask[y, x] = (2153, 17, 153)
+                    elif (blue==0 and green==255 and red==0):
+                        mask[y, x] = (0, 255, 0)
                     else: mask[y, x] = (0, 0, 0)
 
 
