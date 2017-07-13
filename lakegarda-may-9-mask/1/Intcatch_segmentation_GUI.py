@@ -275,6 +275,8 @@ class SegmentationGUI(Frame):
             if(y<=height-25): y2=y+25
             else: y2=height
 
+
+
         self.mask[y1:y2,x1:x2]=color
         imageOUT = cv2.bitwise_or(self.image,self.mask)
         imageOUT = toimage(imageOUT)
