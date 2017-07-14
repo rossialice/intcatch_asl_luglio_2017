@@ -241,11 +241,11 @@ class SegmentationGUI(Frame):
         x=int(self.panelB.canvasx(event.x))#event.x
         y=int(self.panelB.canvasy(event.y))#event.y
         if(self.mask_type_choice.get() == 1): color = np.float64([100,100,255])
-        if(self.mask_type_choice.get() == 2): color = np.float64([255,255,255])
+        if(self.mask_type_choice.get() == 2): color = np.float64([153, 17, 153])
         if(self.mask_type_choice.get() == 3): color = np.float64([0,0,0])
         if (self.mask_type_choice.get() == 4): color = np.float64([0, 255, 0])
         if (self.mask_type_choice.get() == 5): color = np.float64([200, 8, 21])
-        if (self.mask_type_choice.get() == 6): color = np.float64([153, 17, 153])
+        if (self.mask_type_choice.get() == 6): color = np.float64([255, 255, 255])
         height,width=self.image.shape[:2]
         if(self.pen_size.get()==1):
             if(x>=5): x1=x-5
@@ -397,21 +397,21 @@ class SegmentationGUI(Frame):
             #print(x,"-",y,"-",true_x,"-",true_y)
             clicked_segment = self.segments[y,x]
             if(self.mask_type_choice.get() == 1): color = np.float64([100,100,255])
-            if(self.mask_type_choice.get() == 2): color = np.float64([255,255,255])
+            if(self.mask_type_choice.get() == 2): color = np.float64([153, 17, 153])
             if(self.mask_type_choice.get() == 3): color = np.float64([0,0,0])
             if (self.mask_type_choice.get() == 4): color = np.float64([0, 255, 0])
             if (self.mask_type_choice.get() == 5): color = np.float64([200, 8, 21])
-            if (self.mask_type_choice.get() == 6): color = np.float64([153, 17, 153])
-            image2=np.copy(self.image)
+            if (self.mask_type_choice.get() == 6): color = np.float64([255, 255, 255])
             self.mask[self.segments == clicked_segment] = color
             imageOUT = np.bitwise_or(self.image,self.mask)
-            imageOUT = toimage(mark_boundaries(imageOUT, self.segments))
-            imageOUT = ImageTk.PhotoImage(imageOUT)
-            for x in range(self.width_original):
-                for y in range(self.height_original):
+            '''height, widht = self.image.shape[:2]
+            for x in range(widht):
+                for y in range(height):
                     tmp = self.mask[y, x]
                     if (np.array_equal(tmp, (153, 17, 153))):
-                        image2 = self.mask[y, x]
+                        image2[y, x] = self.mask[y, x]'''
+            imageOUT = toimage(mark_boundaries(imageOUT, self.segments))
+            imageOUT = ImageTk.PhotoImage(imageOUT)
             self.panelA.create_image(0, 0, image = imageOUT, anchor = NW)
             self.panelA.image = imageOUT
     
@@ -644,10 +644,10 @@ class SegmentationGUI(Frame):
                     elif ((blue<210 and blue>190) and green<18 and (red>11 and red<31)):
                         mask[y, x] = (21, 8, 200)
                         mask2saveVisible[y, x] =  150
-                    elif (blue==255 and green==255 and red==255):
-                        mask[y, x] = (255, 255, 255)
                     elif (blue==153 and green==17 and red==153):
-                        mask[y, x] = (2153, 17, 153)
+                        mask[y, x] = (255, 255, 255)
+                    elif (blue==255 and green==255 and red==255):
+                        mask[y, x] = (153, 17, 153)
                     elif (blue==0 and green==255 and red==0):
                         mask[y, x] = (0, 255, 0)
                     else: mask[y, x] = (0, 0, 0)
