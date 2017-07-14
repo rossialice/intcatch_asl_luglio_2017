@@ -32,7 +32,7 @@ from skimage.segmentation import find_boundaries
 from scipy.misc import toimage
 import numpy as np
 import glob
-
+import matplotlib.pyplot as plt
 import os
 
 
@@ -203,7 +203,7 @@ class SegmentationGUI(Frame):
             imageOUT=toimage(imageOUT)
             imageOUT = ImageTk.PhotoImage(imageOUT)
             self.panelB.create_image(0, 0, image = imageOUT, anchor = NW)
-            self.panelB.image = imageOUT
+            self.panelB.image = imageOUTf
             RadioButtonChoiceTheMask1=Radiobutton(self.t, text="Water", padx = 20, variable=self.mask_type_choice, value=1)
             RadioButtonChoiceTheMask2=Radiobutton(self.t, text="Other", padx = 20, variable=self.mask_type_choice, value=2)
             RadioButtonChoiceTheMask3=Radiobutton(self.t, text="Undo", padx = 20, variable=self.mask_type_choice, value=3)
@@ -402,11 +402,16 @@ class SegmentationGUI(Frame):
             if (self.mask_type_choice.get() == 4): color = np.float64([0, 255, 0])
             if (self.mask_type_choice.get() == 5): color = np.float64([200, 8, 21])
             if (self.mask_type_choice.get() == 6): color = np.float64([153, 17, 153])
+            image2=np.copy(self.image)
             self.mask[self.segments == clicked_segment] = color
-            imageOUT = cv2.bitwise_or(self.image,self.mask)
+            imageOUT = np.bitwise_or(self.image,self.mask)
             imageOUT = toimage(mark_boundaries(imageOUT, self.segments))
             imageOUT = ImageTk.PhotoImage(imageOUT)
-
+            for x in range(self.width_original):
+                for y in range(self.height_original):
+                    tmp = self.mask[y, x]
+                    if (np.array_equal(tmp, (153, 17, 153))):
+                        image2 = self.mask[y, x]
             self.panelA.create_image(0, 0, image = imageOUT, anchor = NW)
             self.panelA.image = imageOUT
     
