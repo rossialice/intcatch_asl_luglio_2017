@@ -9,6 +9,8 @@ class LogReader:
         with open(self.nomefile, "r") as f:
             for line in f:
                 self.parse(line)
+        for i in range(len(self.gps_collector)):
+            print(self.gps_collector[i])
 
     def parse(self, line):
         if "pose" in line:
@@ -42,11 +44,11 @@ class LogReader:
             return zone
 
 
+
 if __name__ == "__main__":
     log_reader = LogReader("../data/platypus_20170623_045902.txt")
     log_reader.read()
-    for i in range(len(log_reader.gps_collector)):
-        print(log_reader.gps_collector[i])
+
 
 
 

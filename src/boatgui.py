@@ -58,7 +58,7 @@ class Gui(tk.Frame):
         #Using try in case user types in unknown file or closes without choosing a file.
         try:
             with open(name,'r') as UseFile:
-                print(UseFile.read())
+                print("Log file opened!")
         except:
             print("No file exists")
 			
