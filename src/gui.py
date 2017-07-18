@@ -6,6 +6,8 @@ from tkinter.filedialog import askopenfilename
 
 from PIL import Image, ImageTk
 
+from logreader import LogReader
+
 class GUI(tk.Frame):
 
     def __init__(self, master=None):
@@ -45,6 +47,9 @@ class GUI(tk.Frame):
                 print(UseFile.read())
         except:
             print("No file exists")
+			
+        log_reader = LogReader(name)
+        log_reader.read()
 	
     def graph(self):
         print("Graph!")
