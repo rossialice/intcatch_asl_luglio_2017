@@ -13,7 +13,7 @@ class LogReader:
             print(self.gps_collector[i])
 
     def parse(self, line):
-        if "pose" in line:
+        if "pose" in line and "32North" in line:
             start_index = line.find('[')
             finish_index = line.find(']')
             start_index += 1
@@ -22,9 +22,9 @@ class LogReader:
                 p_list = list()
                 for i in range (3):
                     p_list.append(float(p.split(',')[i]))
-            self.gps_collector.append([p_list, self.parse2(line.split(']')[1]), self.parse3(line.split(']')[2])])
+            self.gps_collector.append([p_list, self.findQ(line.split(']')[1]), self.findZone(line.split(']')[2])])
 
-    def parse2(self, line):
+    def findQ(self, line):
         start_index = line.find('[')
         start_index += 1
         if start_index > 0 :
@@ -34,7 +34,7 @@ class LogReader:
                 q_list.append(float(q.split(',')[i]))
             return q_list
 
-    def parse3(self, line):
+    def findZone(self, line):
         start_index = line.find(':')
         start_index += 2
         finish_index = line.find('}')

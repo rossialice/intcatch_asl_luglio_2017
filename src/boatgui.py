@@ -1,4 +1,6 @@
 import tkinter as tk
+import cv2
+import numpy as np
 
 from tkinter import Tk, Label, Button, PhotoImage
 from tkinter import ttk
@@ -20,6 +22,21 @@ class Gui(tk.Frame):
     def play(self):
         print("Play!")
         self.graph_button.configure(state="active")
+        img = self.map.getMapImage()
+        height, width = img.shape[:2]
+        prop = float(height) / float(width)
+        img_resized = np.zeros((height * (3.0 / 4.0), width * (3.0 / 4.0), 3), np.uint8)
+        for i in range (0, len(self.gps_collection)):
+            coor = self.map.convert([self.gps_collection[i][0][0], self.gps_collection[i][0][1]])
+            #print(self.gps_collection[i][0][0])
+            #coor = self.map.convert([658295, 5024849])
+            #print(coor)
+            #cv2.circle(img, int(coor), 5, (0, 0, 255), 1)
+            cv2.circle(img, (int(coor[0]), int(coor[1])), 3, (0, 0, 255), 1)
+            img_resized = cv2.resize(img, (int(height * (3.0 / 4.0)), int(int(height * (3.0 / 4.0)) * prop)), fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
+            cv2.imshow("map", img_resized)
+            cv2.waitKey(1)
+
         #self.gps_collection
 
     def stop(self):
@@ -46,6 +63,7 @@ class Gui(tk.Frame):
 
         map_reader = MapReader(name)
         map_reader.read()
+        self.map = map_reader.getMap()
 		
 	
     def log(self):
