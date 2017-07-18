@@ -7,17 +7,20 @@ from tkinter.filedialog import askopenfilename
 from PIL import Image, ImageTk
 
 from logreader import LogReader
+from mapreader import MapReader
 
-class GUI(tk.Frame):
+class Gui(tk.Frame):
 
     def __init__(self, master=None):
         super().__init__(master)
         self.pack()
         self.create_widgets()
+        self.gps_collection = list()
 
     def play(self):
         print("Play!")
         self.graph_button.configure(state="active")
+        #self.gps_collection
 
     def stop(self):
         print("Stop!")
@@ -32,6 +35,17 @@ class GUI(tk.Frame):
         self.next_button.configure(state="active")
         self.play_button.configure(state="active")
         self.map_button.configure(state="disabled")
+
+        name = askopenfilename(initialdir="C:/Users/Batman/Documents/Programming/tkinter/", filetypes=(("image", "*.png"), ("All Files", "*.*")), title="Choose a file.")
+        print(name)
+        try:
+            with open(name, 'r') as UseFile:
+                print(UseFile.read())
+        except:
+            print("No file exists")
+
+        map_reader = MapReader(name)
+        map_reader.read()
 		
 	
     def log(self):
@@ -50,6 +64,7 @@ class GUI(tk.Frame):
 			
         log_reader = LogReader(name)
         log_reader.read()
+        self.gps_collection = log_reader.gps_collector
 	
     def graph(self):
         print("Graph!")

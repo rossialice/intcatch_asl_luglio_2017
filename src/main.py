@@ -6,8 +6,7 @@ import tkinter
 
 from tkinter import *
 from tkinter import ttk
-
-from gui import GUI
+import boatgui
 
 
 #test opencv
@@ -41,6 +40,8 @@ cv2.destroyAllWindows()
 
 '''
 
-root = Tk()
-my_gui = GUI(master=root)
-root.mainloop()
+
+if __name__ == "__main__":
+    root = Tk()
+    my_gui = boatgui.Gui(master=root)
+    root.mainloop()
