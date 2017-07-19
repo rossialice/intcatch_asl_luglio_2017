@@ -20,5 +20,5 @@ class Map:
         alpha_i = (float(res[1]) * float(width)) / w_umt
         res[0]=width - alpha_i
         res[1]=beta_i
-        print(res)
+        #print(res)
         return res

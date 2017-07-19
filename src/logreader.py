@@ -10,7 +10,8 @@ class LogReader:
             for line in f:
                 self.parse(line)
         for i in range(len(self.gps_collector)):
-            print(self.gps_collector[i])
+            #print(self.gps_collector[i])
+            None
 
     def parse(self, line):
         if "pose" in line and "32North" in line:
