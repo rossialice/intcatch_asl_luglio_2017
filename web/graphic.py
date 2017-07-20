@@ -22,4 +22,6 @@ for x in range (1, 71):
 plt.plot(dat[0], dat[1], 'green')
 
 plt.plot([0.5*108, 1*108, 1.5*108, 2*108, 2.5*108, 3*108, 4*108, 5*108, 5.5*108, 6.5*108, 7*108], [568.5, 444.7, 375, 339.5, 270, 259.3, 225.5, 207.5, 220, 210.2, 192], 'ro')
+plt.xlabel("distance to obstacle (cm)")
+plt.ylabel("pixels from top of image")
 plt.show()
