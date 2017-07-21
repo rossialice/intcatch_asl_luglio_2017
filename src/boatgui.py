@@ -14,26 +14,40 @@ from mapreader import MapReader
 class Gui(tk.Frame):
 
     def __init__(self, master=None):
-        super().__init__(master)
+        super(Gui, self).__init__(master)
+        self.master = master
         self.pack()
         self.create_widgets()
         self.gps_collection = list()
+        self.action = 0
+        self.running_cnt = 0
+        self.keep_running = False
+        self.index = 0
+        self.n_fun = False
+        self.f_cnt = 0
 
     def play(self):
         print("Play!")
+        self.master.after(0, self.readAndDraw)
+        self.keep_running = True
+        self.stop_button.configure(state="active")
+        self.play_button.configure(state="disabled")
+        time.sleep(3)
         self.graph_button.configure(state="active")
+        time.sleep(3)
         img = self.map.getMapImage()
         height, width = img.shape[:2]
         prop = float(height) / float(width)
         img_resized = np.zeros((height * (3.0 / 4.0), width * (3.0 / 4.0), 3), np.uint8)
         cntcnt=0
         print(img.shape)
-        '''img[100:120, 100:120] = np.zeros(img[100:120, 100:120].shape)
-        img[100:120, 100:120, 0] = 255*np.ones(img[100:120, 100:120, 0].shape)'''
+        #img[100:120, 100:120] = np.zeros(img[100:120, 100:120].shape)
+        #img[100:120, 100:120, 0] = 255*np.ones(img[100:120, 100:120, 0].shape)
         #for j in range (100, 120):
         #    for k in range (100, 120
         #    img[100, 100] = 255, 255, 0)
-        for i in range (0, len(self.gps_collection)):
+        self.readAndDraw()
+        '''for i in range (0, len(self.gps_collection)):
             coor = self.map.convert([self.gps_collection[i][0][0], self.gps_collection[i][0][1]])
             #print(self.gps_collection[i][0][0])
             #coor = self.map.convert([658295, 5024849])
@@ -46,11 +60,11 @@ class Gui(tk.Frame):
             red = img[int(coor[1])][int(coor[0])][2]
             #img[int(coor[1])][int(coor[0])] = [0, 0, 0]
             print(blue, green, red)
-            '''if cntcnt == 0:
+            if cntcnt == 0:
                 blue = 255
                 green = 202
                 red = 156
-                cntcnt += 1'''
+                cntcnt += 1
             #if np.all(img[int(coor[0]), int(coor[1])] == (255, 202, 156)):
             if (blue > 245 and 192 < green < 212 and 146 < red < 166) or (red == 255 and (green + blue) == 0):
             #if blue != 229 and green != 237 and red != 240:
@@ -62,20 +76,63 @@ class Gui(tk.Frame):
             img_resized = cv2.resize(img, (int(height * (3.0 / 4.0)), int(int(height * (3.0 / 4.0)) * prop)), fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
             cv2.imshow("map", img_resized)
             #cv2.imshow("map", img)
-            cv2.waitKey(1)
+            cv2.waitKey(1)'''
 
         #self.gps_collection
 
+    def readAndDraw(self):
+        self.running_cnt += 1
+        '''print("it works {}".format(self.running_cnt))
+        if self.keep_running :
+            self.master.after(1, self.readAndDraw)'''
+        if self.keep_running:
+            img = self.map.getMapImage()
+            height, width = img.shape[:2]
+            prop = float(height) / float(width)
+            coor = self.map.convert([self.gps_collection[self.running_cnt][0][0], self.gps_collection[self.running_cnt][0][1]])
+
+            blue = img[int(coor[1])][int(coor[0])][0]
+            green = img[int(coor[1])][int(coor[0])][1]
+            red = img[int(coor[1])][int(coor[0])][2]
+            print(blue, green, red)
+            if (blue > 245 and 192 < green < 212 and 146 < red < 166) or (red == 255 and (green + blue) == 0):
+                cv2.circle(img, (int(coor[0]), int(coor[1])), 3, (0, 0, 255), 1)
+            else:
+                cv2.circle(img, (int(coor[0]), int(coor[1])), 3, (0, 255, 0), 1)
+                print(coor[0], coor[1])
+            img_resized = cv2.resize(img, (int(height * (3.0 / 4.0)), int(int(height * (3.0 / 4.0)) * prop)), fx=2,
+                                     fy=2, interpolation=cv2.INTER_CUBIC)
+            cv2.imshow("map", img_resized)
+            cv2.waitKey(1)
+            if self.n_fun == False:
+                self.master.after(1, self.readAndDraw)
+            else:
+                if self.f_cnt == 0:
+                    self.n_fun = False
+                    self.master.after
+                else :
+                    self.f_cnt -= 1
+                    self.master.after(1, self.readAndDraw)
+
+
     def stop(self):
+        self.play_button.configure(state="active")
+        self.stop_button.configure(state="disabled")
         print("Stop!")
+        self.keep_running = False
 
 
     def next(self):
-        print("Next!")   
+        print("Next!")
+        self.keep_running = False
+        self.keep_running = True
+        self.n_fun = True
+        self.f_cnt = 10
+        self.readAndDraw()
 
     def map(self):
         print("Map!")
-        self.stop_button.configure(state="active")
+        #self.stop_button.configure(state="active")
         self.next_button.configure(state="active")
         self.play_button.configure(state="active")
         self.map_button.configure(state="disabled")

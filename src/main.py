@@ -45,3 +45,4 @@ if __name__ == "__main__":
     root = Tk()
     my_gui = boatgui.Gui(master=root)
     root.mainloop()
+    my_gui.run()
