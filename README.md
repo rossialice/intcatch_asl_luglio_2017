@@ -11,10 +11,10 @@ A python software for reading logs captured from the INTCATCH boats
  
 <h1>Attività svolte:</h1>
 
- <p> 1. Realizzazione di watermask.</p>
-<p> 2. </p>
-<p> 3. </p>
- <p> 4. </p>
+ <p> 1. Realizzazione di programma atto alla realizzazione di maschere di segmentazione.</p>
+<p> 2. Modello di guida differenziale su robot LEGO MINDSTORM NXT.  </p>
+<p> 3. Realizzazione del programma di lettura di Log e di visione dati su mappa. </p>
+ <p> 4. Creazione e pubblicazione di video didattico-informativi.</p>
 
 
 ![GitHub Logo](image/intcatchlogo.png)
@@ -32,3 +32,85 @@ A python software for reading logs captured from the INTCATCH boats
 				<td>11/07/2017</td>
 				<td>Programmazione python, collaborazione nel realizzare un programma per la creazione di maschere.</td>
 			</tr>
+                        <tr>
+				<td>12 Luglio 2017</td>
+				<td>
+										
+											<ul>
+												<li>Sviluppo di una pagina Web</li>
+												<li>Creazione watermask</li>
+												<li>Ottimizzazione del programma atto alla creazione di maschere</li>
+											</ul>
+										</td>
+										
+									</tr>
+									<tr>
+										<td>13 Luglio 2017</td>
+										<td>
+											<ul>
+												<li>Creazione video tutorial sull'utilizzo del programma</li>
+												<li>Creazione di watermask</li>
+											</ul>
+										</td>
+									
+									</tr>
+									<tr>
+										<td>14 Luglio 2017</td>
+										<td>
+											<ul>
+												<li>Modello di guida differenziale su robot LEGO MINDSTORM NXT </li>
+
+												<li>Ottimizzazione del programma atto alla creazione di maschere</li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<td>17 Luglio 2017</td>
+										
+										<td>
+											<ul>
+											<li>Realizzazione video tutorial sulla creazione interattiva di maschere di segmentazione</li>
+ 											<li>Ottimizzazione del programma atto alla creazione di maschere</li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<td>18 Luglio 2017</td>
+										
+										<td>
+											<ul>
+												<li>Realizzazione del programma di lettura di Log e di visione dati su mappa</li>
+												<li>Ottimizzazione del programma atto alla creazione di maschere</li>
+											</ul>
+										</td>
+
+									</tr> 
+									<tr>
+										<td>19 Luglio 2017</td>
+										<td>
+											<ul>
+												<li>Test delle barche autonome su lago</li>
+												<li>Ottimizzazione del programma di lettura di Log</li>
+												<li>Creazione video sull'esperienza al lago</li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<td>20 Luglio 2017</td>
+										<td>
+											<ul>
+												<li>Calcolo della distanza di un ostacolo partendo dalla sua posizione rispetto l'immagine</li>
+												<li>Ottimizzazione del programma di lettura di Log</li>
+												<li>Ottimizzazione video sull'esperienza al lago</li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<td>21 Luglio 2017</td>
+										<td>
+											<ul>
+												<li>Finalizzazione del programma di lettura di Log</li>
+												<li>Pubblicazione video sull'esperienza al lago</li>
+											</ul>
+										</td>
+									</tr>
