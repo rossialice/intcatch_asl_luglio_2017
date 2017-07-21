@@ -20,11 +20,11 @@ A python software for reading logs captured from the INTCATCH boats
 <table class="classtable">			<tr>
 				<th>Data</th>                                <th>Argomenti trattati </th>
 			</tr>			<tr>
-				<td>10/07/2017</td>
+				<td>10 Luglio 2017</td>
 				<td>Aspetti organizzativi, basi python e creazione sito github</td>
 			</tr>
 			<tr>
-				<td>11/07/2017</td>
+				<td>11 Luglio 2017</td>
 				<td>Programmazione python, collaborazione nel realizzare un programma per la creazione di maschere.</td>
 			</tr>
                         <tr>
