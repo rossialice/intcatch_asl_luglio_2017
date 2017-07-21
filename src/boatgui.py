@@ -24,6 +24,7 @@ class Gui(tk.Frame):
         self.keep_running = False
         self.index = 0
         self.n_fun = False
+        self.f_cnt = 0
 
     def play(self):
         print("Play!")
@@ -106,8 +107,12 @@ class Gui(tk.Frame):
             if self.n_fun == False:
                 self.master.after(1, self.readAndDraw)
             else:
-                self.n_fun = False
-                self.master.after
+                if self.f_cnt == 0:
+                    self.n_fun = False
+                    self.master.after
+                else :
+                    self.f_cnt -= 1
+                    self.master.after(1, self.readAndDraw)
 
 
     def stop(self):
@@ -122,6 +127,7 @@ class Gui(tk.Frame):
         self.keep_running = False
         self.keep_running = True
         self.n_fun = True
+        self.f_cnt = 10
         self.readAndDraw()
 
     def map(self):
