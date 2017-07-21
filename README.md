@@ -1,4 +1,4 @@
- # intcatch asl luglio 2017        
+ # intcatch asl luglio 2017       
 <img src="image/logouni.png" height=50> 
 
 A python software for reading logs captured from the INTCATCH boats
@@ -34,14 +34,7 @@ A python software for reading logs captured from the INTCATCH boats
 			</tr>
                         <tr>
 				<td>12 Luglio 2017</td>
-				<td><ul>
-												<li>Sviluppo di una pagina Web</li>
-												<li>Creazione watermask</li>
-												<li>Ottimizzazione del programma atto alla creazione di maschere</li>
-											</ul>
-										</td>
-										
-									</tr>
+				<td>Sviluppo di una pagina Web, creazione watermask, ottimizzazione del programma atto alla creazione di maschere</td></tr>
 									<tr>
 										<td>13 Luglio 2017</td>
 										<td>
