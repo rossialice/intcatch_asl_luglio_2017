@@ -34,9 +34,7 @@ A python software for reading logs captured from the INTCATCH boats
 			</tr>
                         <tr>
 				<td>12 Luglio 2017</td>
-				<td>
-										
-											<ul>
+				<td><ul>
 												<li>Sviluppo di una pagina Web</li>
 												<li>Creazione watermask</li>
 												<li>Ottimizzazione del programma atto alla creazione di maschere</li>
