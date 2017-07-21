@@ -3,7 +3,7 @@ import cv2
 import math
 import sys
 
-cap = cv2.VideoCapture('C:/Users/pc/Videos/Movavi Library/Ultimissimotentativo.avi')
+cap = cv2.VideoCapture('C:/Users/Ricci Yuri/Videos/Movavi Library/sec.avi')
 
 #fourcc = cap.get(6)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
@@ -18,7 +18,7 @@ height= cap.get(4)
 h2=int(height)
 print("height: "+str(height))
 #out = cv2.VideoWriter('output.avi',fourcc, fps, (width,height))
-out = cv2.VideoWriter('output.avi',fourcc, fps, (w2,h2))
+out = cv2.VideoWriter('output2.avi',fourcc, fps, (w2,h2))
 
 if out.isOpened():print("Canale output aperto")
 else:
